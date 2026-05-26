@@ -35,6 +35,16 @@ with {:ok, table} <- FSST.train(samples),
 end
 ```
 
+## Existing symbol tables
+
+Some formats store a pre-trained FSST dictionary separately from compressed
+payloads. Build a table directly from symbols in code order:
+
+```elixir
+table = FSST.table_from_symbols!(["hello", " world"])
+"hello world!" = FSST.decompress!(table, <<0, 1, 255, ?!>>)
+```
+
 ## Backends
 
 - `FSST.Pure` is always available and contains the Elixir implementation.
