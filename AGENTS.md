@@ -47,7 +47,7 @@ Elixir modules:
 3. Run `mix ci`
 4. Commit: `git commit -m "Release vX.Y.Z"`
 5. Tag and push: `git tag vX.Y.Z && git push && git push --tags`
-6. Wait for the precompile workflow to finish (all 5 targets must pass)
+6. Wait for the precompile workflow to finish (all 4 targets must pass)
 7. Download checksums:
    ```sh
    FSST_BUILD=1 mix rustler_precompiled.download FSST.Native --all
