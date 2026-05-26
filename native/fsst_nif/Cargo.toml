@@ -1,0 +1,12 @@
+[package]
+name = "fsst_nif"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "fsst_nif"
+crate-type = ["cdylib"]
+
+[dependencies]
+fsst-rs = "0.5.10"
+rustler = "0.38.0"
