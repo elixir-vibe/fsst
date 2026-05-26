@@ -42,6 +42,7 @@ defmodule FSST.MixProject do
       {:ex_slop, "~> 0.4", only: [:dev, :test], runtime: false},
       {:reach, "~> 2.0", only: [:dev, :test], runtime: false},
       {:rustler, "~> 0.38", optional: true, runtime: false},
+      {:rustler_precompiled, "~> 0.8"},
       {:ex_dna, "~> 1.0", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
       {:credo, "~> 1.0", only: [:dev, :test], runtime: false},
@@ -54,7 +55,7 @@ defmodule FSST.MixProject do
     [
       licenses: ["MIT"],
       files:
-        ~w(lib native/fsst_nif/src native/fsst_nif/Cargo.toml native/fsst_nif/Cargo.lock .formatter.exs mix.exs README.md LICENSE),
+        ~w(lib native/fsst_nif/src native/fsst_nif/Cargo.toml native/fsst_nif/Cargo.lock .formatter.exs mix.exs README.md LICENSE checksum-*.exs),
       links: %{
         "GitHub" => @source_url,
         "fsst-rs" => "https://docs.rs/fsst-rs/latest/fsst/",

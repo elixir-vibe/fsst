@@ -36,22 +36,6 @@ defmodule FSST do
   end
 
   @doc """
-  Builds a pure Elixir table from an existing serialized FSST symbol table.
-
-  Symbols must be provided in code order. This is useful for formats such as
-  DuckDB/QuackDB vectors that store a pre-trained FSST dictionary separately
-  from compressed payloads.
-  """
-  @spec table_from_symbols([binary()]) :: {:ok, table()} | {:error, reason()}
-  def table_from_symbols(symbols), do: Table.from_symbols(symbols)
-
-  @doc """
-  Builds a table from existing serialized symbols or raises.
-  """
-  @spec table_from_symbols!([binary()]) :: table()
-  def table_from_symbols!(symbols), do: Table.from_symbols!(symbols)
-
-  @doc """
   Compresses a binary with a table returned by `train/2`.
   """
   @spec compress(table(), binary(), keyword()) :: {:ok, binary()} | {:error, reason()}

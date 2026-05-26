@@ -41,7 +41,7 @@ Some formats store a pre-trained FSST dictionary separately from compressed
 payloads. Build a table directly from symbols in code order:
 
 ```elixir
-table = FSST.table_from_symbols!(["hello", " world"])
+table = FSST.Table.from_symbols!(["hello", " world"])
 "hello world!" = FSST.decompress!(table, <<0, 1, 255, ?!>>)
 ```
 

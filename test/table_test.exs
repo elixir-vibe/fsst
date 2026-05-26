@@ -9,11 +9,6 @@ defmodule FSST.TableTest do
     assert FSST.decompress(table, compressed) == {:ok, "hello world!"}
   end
 
-  test "exposes top-level table_from_symbols helpers" do
-    assert {:ok, table} = FSST.table_from_symbols(["abc"])
-    assert FSST.decompress!(table, <<0, 255, ?d>>) == "abcd"
-  end
-
   test "validates serialized symbols" do
     assert FSST.Table.from_symbols(:bad) == {:error, :invalid_symbols}
     assert FSST.Table.from_symbols([""]) == {:error, :invalid_symbol}
