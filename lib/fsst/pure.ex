@@ -159,29 +159,14 @@ defmodule FSST.Pure do
 
   defp top_candidates(counts) do
     counts
-    |> Enum.flat_map(fn
-      {_packed, count} when count < @min_count ->
-        []
-
-      {packed, count} ->
-        {length, key} = unpack_key(packed)
-        [{(length - 1) * count, count, length, key}]
-    end)
+    |> candidates_from_counts()
     |> Enum.sort(:desc)
     |> Enum.take(@max_symbols)
     |> Enum.map(fn {_gain, _count, length, key} -> key_to_binary(key, length) end)
   end
 
   defp top_candidates(longer_counts, pair_counts) do
-    longer_candidates =
-      Enum.flat_map(longer_counts, fn
-        {_packed, count} when count < @min_count ->
-          []
-
-        {packed, count} ->
-          {length, key} = unpack_key(packed)
-          [{(length - 1) * count, count, length, key}]
-      end)
+    longer_candidates = candidates_from_counts(longer_counts)
 
     pair_candidates =
       for key <- 0..65_535,
@@ -194,6 +179,17 @@ defmodule FSST.Pure do
     |> Enum.sort(:desc)
     |> Enum.take(@max_symbols)
     |> Enum.map(fn {_gain, _count, length, key} -> key_to_binary(key, length) end)
+  end
+
+  defp candidates_from_counts(counts) do
+    Enum.flat_map(counts, fn
+      {_packed, count} when count < @min_count ->
+        []
+
+      {packed, count} ->
+        {length, key} = unpack_key(packed)
+        [{(length - 1) * count, count, length, key}]
+    end)
   end
 
   defp pack_key(length, key), do: length <<< 64 ||| key
