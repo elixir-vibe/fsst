@@ -9,7 +9,7 @@ mix test                   # test suite
 mix ci                     # full quality suite
 ```
 
-Set `FSST_BUILD=1` for any compilation that touches Rust code.
+Set `FSST_BUILD=1` for any compilation that touches Rust code. GitHub CI uses the shared `elixir-vibe/actions/.github/workflows/elixir-rustler-ci.yml` workflow with `FSST_BUILD=1`.
 
 ## Architecture
 
