@@ -28,7 +28,7 @@ defmodule FSST.Table do
   @spec from_symbols([binary()]) :: {:ok, t()} | {:error, term()}
   def from_symbols(symbols) when is_list(symbols) do
     cond do
-      length(symbols) > 255 ->
+      Enum.count_until(symbols, 256) > 255 ->
         {:error, :too_many_symbols}
 
       Enum.all?(symbols, &valid_symbol?/1) ->
