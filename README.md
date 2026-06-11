@@ -77,6 +77,17 @@ FSST.train!(samples, max_symbol_size: 8, sample_bytes: 65_536)
 mix run bench/fsst_bench.exs
 ```
 
+## Part of Elixir Vibe
+
+FSST brings fast static symbol-table string compression to Elixir.
+
+It is one building block of a larger stack — tools that make AI-generated
+software checkable: structural search, dependence analysis, duplication and
+slop detection, session replay, and ecosystem-wide code search. See the
+[Elixir Vibe](https://github.com/elixir-vibe) organization for the rest, and
+[Building Blocks for the Future Web](https://github.com/elixir-vibe/building-blocks)
+for the thesis, architecture, and roadmap that tie them together.
+
 ## License
 
 MIT © 2026 Danila Poyarkov
